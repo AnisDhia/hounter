@@ -5,8 +5,9 @@
         <v-container class="text-hero ml-16 container">
           <h1 class="font-weight-bold hero-title">Find The Place To <br /> Live <span class="hero-title-outline">Your
               Dreams</span> <br /> Easily Here</h1>
-          <p class="subtitle-1 hero-subtitle my-10 font-weight-light">Everything you need about finding your place to live
+          <p class="subtitle-1 hero-subtitle my-8 font-weight-light">Everything you need about finding your place to live
             will be <br /> here, where it will be easier for you</p>
+
           <v-text-field label="Search for the location you want!" variant="outlined" rounded>
             <template v-slot:append-inner>
               <v-btn size="large" variant="flat" rounded="xl" class="text-none mx-0" color="#10B981"
@@ -16,8 +17,10 @@
               <v-icon icon="fa:fas fa-lock" color="#F59E0B">mdi-map-marker</v-icon>
             </template>
           </v-text-field>
-          <p class="font-weight-light">Our Partnership</p>
-          <v-row class="my-4 w-auto" justify="start" align="center" dense>
+
+          <p class="font-weight-light mt-4">Our Partnership</p>
+
+          <v-row class="mt-4 w-auto" justify="start" align="center" dense>
             <v-img src="@/assets/img/traveloka.png" height="20" />
             <v-img src="@/assets/img/tiketcom.png" height="25" />
             <v-img src="@/assets/img/airbnb.png" height="28" />

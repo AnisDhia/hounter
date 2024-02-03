@@ -23,13 +23,14 @@ import FeaturedSection from './components/FeaturedSection.vue'
 import TestSection from './components/TestSection.vue'
 
 export default {
+
   name: 'App',
 
   components: {
     HeroSection,
     NavBar,
     FeaturedSection,
-    TestSection
+    TestSection,
   },
 
   data: () => ({

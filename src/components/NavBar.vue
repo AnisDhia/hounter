@@ -15,7 +15,7 @@
     </v-navigation-drawer>
 
 
-    <v-app-bar app :color="color" :flat="flat" class="px-4" :class="{ expand: flat, 'margin-top': flat}">
+    <v-app-bar app :color="color" :flat="flat" class="px-4" :class="{ expand: flat, 'margin-top': flat }">
         <v-toolbar-title>
             <v-img src="@/assets/logo.svg" max-height="40" contain />
         </v-toolbar-title>

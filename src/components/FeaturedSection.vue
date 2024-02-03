@@ -1,16 +1,22 @@
 <template>
-    <section>
+    <section id="featured">
         <v-container>
+            <v-toolbar>
+                <v-toolbar-title class="text-h5 font-weight-bold">
+                    Featured Houses
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn text color="primary">
+                    View All
+                </v-btn>
+            </v-toolbar>
             <swiper :modules="modules" :slides-per-view="3" :space-between="50" navigation :pagination="{ clickable: true }"
                 :scrollbar="{ draggable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
-                <swiper-slide>
-                    <HouseCard img-source="@/assets/img/featured.jpeg" title="Roselands House"
-                        avatar-source="../assets/img/avatar1" />
+                <swiper-slide v-for="(house, index) in featuredHouses" :key="index">
+                    <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"
+                        :avatar-title="house.avatarTitle" :avatar-subtitle="house.avatarSubtitle"
+                        :avatar-source="house.avatarSource" :tag="house.tag" />
                 </swiper-slide>
-                <swiper-slide><v-img src="@/assets/img/featured.jpeg" /></swiper-slide>
-                <swiper-slide><v-img src="@/assets/img/featured2.jpeg" /></swiper-slide>
-                <swiper-slide><v-img src="@/assets/img/featured3.jpeg" /></swiper-slide>
-                <swiper-slide><v-img src="@/assets/img/featured4.jpeg" /></swiper-slide>
             </swiper>
         </v-container>
     </section>
@@ -38,6 +44,46 @@ export default {
         SwiperSlide,
         HouseCard,
     },
+    data: () => ({
+        featuredHouses: [
+            {
+                imgSource: "featured.jpeg",
+                title: "Roselands House",
+                price: "35.000.000",
+                avatarSource: "avatar1.jpeg",
+                avatarTitle: "Dianne Russell",
+                avatarSubtitle: "Manchester, Kentucky",
+                tag: "Popular"
+            },
+            {
+                imgSource: "featured2.jpeg",
+                title: "Woodlandside",
+                price: "20.000.000",
+                avatarSource: "avatar2.jpeg",
+                avatarTitle: "Robert Fox",
+                avatarSubtitle: "Dr. San Jose, South Dakota",
+                tag: "New House"
+            },
+            {
+                imgSource: "featured3.jpeg",
+                title: "The Old Lighthouse",
+                price: "44.000.000",
+                avatarSource: "avatar3.jpeg",
+                avatarTitle: "Ronald Richards",
+                avatarSubtitle: "Santa Ana, Illinois",
+                tag: "Best Deals"
+            },
+            {
+                imgSource: "featured4.jpeg",
+                title: "Cosmo's House",
+                price: "22.000.000",
+                avatarSource: "avatar4.jpeg",
+                avatarTitle: "Jenny Wilson",
+                avatarSubtitle: "Preston Rd. Inglewood, Maine 98380",
+                tag: "Popular"
+            },
+        ]
+    }),
     setup() {
         const onSwiper = (swiper) => {
             console.log(swiper);

@@ -17,7 +17,7 @@
 
         <v-card-actions class="mt-4">
             <v-row justify="center" align="center">
-                <v-avatar>
+                <v-avatar class="ml-1">
                     <v-img :src="require('../assets/img/' + avatarSource)" alt="avatar"></v-img>
                 </v-avatar>
                 <v-col>

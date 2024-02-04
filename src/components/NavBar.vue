@@ -28,6 +28,17 @@
                 color="#fff">Article</v-btn>
             <v-btn border variant="tonal" size="small" density="default" rounded="xl" class="text-none white-border"
                 color="#fff" append-icon="mdi-chevron-down">Property</v-btn>
+            <!--TODO: PROPERTY Menu Button <v-menu>
+                <template v-slot:activator="{ props }">
+                    <v-btn v-bind:=props border variant="tonal" size="small" density="default" rounded="xl"
+                        class="text-none white-border" color="#fff" append-icon="mdi-chevron-down">Property</v-btn>
+                </template>
+                <v-list>
+                    <v-list-item v-for="(item, index) in items" :key="index" :value="index" variant="tonal">
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu> -->
             <v-btn size="large" variant="flat" rounded="xl" class="ml-12 text-none sign-up" color="#D1FAE5"
                 style="color: #047857;">Sign Up!</v-btn>
         </v-row>
@@ -41,9 +52,9 @@ export default {
         drawer: null,
         isXs: false,
         items: [
-            { title: 'About Us', icon: 'mdi-information', link: '#about' },
-            { title: 'Article', icon: 'mdi-newspaper', link: '#article' },
-            { title: 'Property', icon: 'mdi-home', link: '#property' },]
+            { title: 'House', icon: 'mdi-home', link: '#' },
+            { title: 'Villa', icon: 'mdi-home', link: '#' },
+            { title: 'Apartment', icon: 'mdi-building', link: '#' },]
     }),
     props: {
         color: String,

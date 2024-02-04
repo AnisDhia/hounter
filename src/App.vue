@@ -3,24 +3,29 @@
     <NavBar :color="color" :flat="flat"/>
     <v-main class="pt-0">
       <HeroSection />
-      <FeaturedSection />
-      <HeroSection />
-      <TestSection />
+      <RecommendedSection />
+      <ReadyToSellSection />
+      <ReviewsSection />
+      <TipsAndTricksSection />
+      <Subscribe />
     </v-main>
     <v-scale-transition>
-      <v-btn fab v-show="fab" v-scroll="onScroll" fixed bottom right color="secondary" @click="toTop">
-        <v-icon>mdi-arrow-up</v-icon>
+      <v-btn icon="mdi-chevron-up" v-show="fab" v-scroll="onScroll" color="#10B981" class="mb-4" @click="toTop" style="position: fixed; bottom: 0; right: 5%; z-index: 9999;">
       </v-btn>
     </v-scale-transition>
-    <v-footer>yo</v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
-import HeroSection from './components/HeroSection.vue'
-import FeaturedSection from './components/FeaturedSection.vue'
-import TestSection from './components/TestSection.vue'
+import HeroSection from './components/hero/index.vue'
+import RecommendedSection from './components/recommended/index.vue'
+import ReadyToSellSection from './components/ready-to-sell/index.vue'
+import ReviewsSection from './components/reviews/index.vue'
+import TipsAndTricksSection from './components/tips-and-tricks/index.vue'
+import Subscribe from './components/Subscribe.vue'
+import Footer from './components/Footer.vue'
 
 export default {
 
@@ -29,8 +34,12 @@ export default {
   components: {
     HeroSection,
     NavBar,
-    FeaturedSection,
-    TestSection,
+    RecommendedSection,
+    ReadyToSellSection,
+    ReviewsSection,
+    TipsAndTricksSection,
+    Subscribe,
+    Footer
   },
 
   data: () => ({
@@ -50,7 +59,7 @@ export default {
   watch: {
     fab(value) {
       if (value) {
-        this.color = "secondary";
+        this.color = "#10B981";
         this.flat = false;
       } else {
         this.color = "transparent";
@@ -66,7 +75,8 @@ export default {
       this.fab = top > 60;
     },
     toTop() {
-      this.$vuetify.goTo(0);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // this.$vuetify.goTo(0);
     },
   }
 };

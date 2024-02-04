@@ -1,17 +1,51 @@
 <template>
-    <section id="featured">
+    <section id="recommended">
         <v-container>
-            <v-toolbar>
+            <div class="mb-4" style="height: 18px; position: relative">
+                <div style="left: 0px; top: 0px; position: absolute; color: #F59E0B; font-size: 14px; font-weight: 500;">
+                    Our Recommendation</div>
+                <div style="width: 32px; height: 1px; left: -42px; top: 8px; position: absolute; background: #F59E0B">
+                </div>
+            </div>
+            <v-row class="mt-4 mb-8">
+                <h1 class="pl-2">Featured Houses</h1>
+                <v-spacer>
+                </v-spacer>
+                <v-btn height="48px" size="large" variant="tonal" rounded="xl" class="text-none mx-3 px-6" color="#10B981">
+                    <template v-slot:prepend>
+                        <House />
+                    </template>
+                    House
+                </v-btn>
+                <v-btn height="48px" size="large" variant="outlined" rounded="xl" class="text-none mx-3 px-6"
+                    color="#888B97">
+                    <template v-slot:prepend>
+                        <Villa />
+                    </template>
+                    Villa
+                </v-btn>
+                <v-btn height="48px" size="large" variant="outlined" rounded="xl" class="text-none mx-3 px-6"
+                    color="#888B97">
+                    <template v-slot:prepend>
+                        <Apartment />
+                    </template>
+                    Apartment
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn icon="mdi-chevron-left" flat class="mr-4" color="#E0E3EB"></v-btn>
+                <v-btn icon="mdi-chevron-right" flat color="#10B981"></v-btn>
+            </v-row>
+            <!-- <v-toolbar>
                 <v-toolbar-title class="text-h5 font-weight-bold">
-                    Featured Houses
+                    <h1>Featured Houses</h1>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text color="primary">
                     View All
                 </v-btn>
-            </v-toolbar>
-            <swiper :modules="modules" :slides-per-view="3" :space-between="50" navigation :pagination="{ clickable: true }"
-                :scrollbar="{ draggable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+            </v-toolbar> -->
+            <swiper :modules="modules" :slides-per-view="3" :space-between="50" navigation loop="true" @swiper="onSwiper"
+                @slideChange="onSlideChange">
                 <swiper-slide v-for="(house, index) in featuredHouses" :key="index">
                     <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"
                         :avatar-title="house.avatarTitle" :avatar-subtitle="house.avatarSubtitle"
@@ -24,7 +58,7 @@
 
 <script>
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, A11y } from 'swiper/modules';
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -32,17 +66,25 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+// import 'swiper/css/pagination';
+// import 'swiper/css/scrollbar';
 
 import HouseCard from './HouseCard.vue';
 
+//? Icons
+import House from '@/components/icons/house.vue';
+import Villa from '@/components/icons/villa.vue';
+import Apartment from '@/components/icons/apartment.vue';
+
 export default {
-    name: 'FeaturedSection',
+    name: 'RecommendedSection',
     components: {
         Swiper,
         SwiperSlide,
         HouseCard,
+        House,
+        Villa,
+        Apartment
     },
     data: () => ({
         featuredHouses: [
@@ -94,8 +136,18 @@ export default {
         return {
             onSwiper,
             onSlideChange,
-            modules: [Navigation, Pagination, Scrollbar, A11y],
+            modules: [Navigation, A11y],
         };
     },
 }
 </script>
+
+<style scoped>
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1B1C57;
+}
+</style>

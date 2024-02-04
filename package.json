@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@vercel/speed-insights": "^1.0.9",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
     "json-server": "^1.0.0-alpha.23",

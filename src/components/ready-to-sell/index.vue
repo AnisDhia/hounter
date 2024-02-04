@@ -15,25 +15,25 @@
                     <p class="subtitle-1 hero-subtitle my-6 font-weight-light">Houses recommended by our partners that have
                         been <br /> curated to become the home of your dreams</p>
                     <h3>House Detail</h3>
-                    <v-row>
+                    <v-row class="mt-4">
                         <v-col>
-                            <div class="my-6">
+                            <div class="mb-6">
                                 <Bed class="mr-4" />
-                                <span>3 Bedrooms</span>
+                                <span>4 Bedrooms</span>
                             </div>
                             <div class="my-6">
                                 <Car class="mr-4" />
-                                <span>3 Carport</span>
+                                <span>1 Carport</span>
                             </div>
                         </v-col>
                         <v-col>
-                            <div class="my-6">
+                            <div class="mb-6">
                                 <Bath class="mr-4" />
-                                <span>3 Bedrooms</span>
+                                <span>2 Bathrooms</span>
                             </div>
                             <div class="my-6">
                                 <Floors class="mr-4" />
-                                <span>3 Carport</span>
+                                <span>2 Floors</span>
                             </div>
                         </v-col>
                     </v-row>
@@ -61,8 +61,18 @@
                     </v-row>
                 </v-container>
             </v-col>
-            <v-col class="d-flex justify-center bg-blue" cols="12" md="6">
-                <div class="box"></div>
+            <v-col class="d-flex justify-center" cols="12" md="6">
+                <v-container class="w-auto">
+                    <v-img src="@/assets/img/readytosell.png" height="416" width="488" cover style="overflow: visible;">
+                        <v-img src="@/assets/img/readytosell2.jpeg" height="168" width="296" cover
+                            style="position: absolute; bottom: -5%; left: -8%; overflow: visible;">
+                            <v-img src="@/assets/img/readytosell3.jpeg" height="80" width="96" cover
+                                style="position: absolute; bottom: 0; right: -35%"></v-img>
+                            <v-img src="@/assets/img/readytosell4.jpeg" height="80" width="96" cover
+                                style="position: absolute; bottom: 0; right: -70%"></v-img></v-img>
+
+                    </v-img>
+                </v-container>
             </v-col>
         </v-row>
     </section>
@@ -119,5 +129,4 @@ h3 {
 span {
     font-size: 16px;
     color: #626687;
-}
-</style>
+}</style>

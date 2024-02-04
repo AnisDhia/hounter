@@ -1,4 +1,5 @@
 <template>
+  <!-- <SpeedInsights /> -->
   <v-app>
     <NavBar :color="color" :flat="flat"/>
     <v-main class="pt-0">
@@ -18,6 +19,8 @@
 </template>
 
 <script>
+// import { SpeedInsights } from "@vercel/speed-insights/vue"
+
 import NavBar from './components/NavBar.vue'
 import HeroSection from './components/hero/index.vue'
 import RecommendedSection from './components/recommended/index.vue'
@@ -39,7 +42,8 @@ export default {
     ReviewsSection,
     TipsAndTricksSection,
     Subscribe,
-    Footer
+    Footer,
+    // SpeedInsights
   },
 
   data: () => ({

@@ -3,9 +3,9 @@
         <v-img :src="require('@/assets/img/' + imgSource)" height="400px" cover class="rounded-xl">
             <v-chip class="ma-4" style="position: absolute; bottom: 0;" :color="chipBackground(tag)" variant="flat">
                 <!-- <v-icon class="mr-2" left :color="chipColor(tag)">{{ chipIcon(tag) }}</v-icon> -->
-                <Fire v-if="tag == 'Popular'"/>
-                <Home v-if="tag == 'New House'"/>
-                <Wallet v-if="tag == 'Best Deals'"/>
+                <Fire v-if="tag == 'Popular'" />
+                <Home v-if="tag == 'New House'" />
+                <Wallet v-if="tag == 'Best Deals'" />
                 <span class="ml-3" :style="{ color: chipColor(tag) }">{{ tag }}</span>
             </v-chip>
         </v-img>
@@ -31,6 +31,7 @@
                         {{ avatarSubtitle }}
                     </p>
                 </v-col>
+               
             </v-row>
         </v-card-actions>
     </v-card>
@@ -79,7 +80,7 @@ export default {
                 return "#D1FAE5";
             }
         },
-        
+
     }
 }
 </script>

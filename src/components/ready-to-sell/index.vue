@@ -63,12 +63,12 @@
             </v-col>
             <v-col class="d-flex justify-center" cols="12" md="6">
                 <v-container class="w-auto">
-                    <v-img src="@/assets/img/readytosell.png" height="416" width="488" cover style="overflow: visible;">
-                        <v-img src="@/assets/img/readytosell2.jpeg" height="168" width="296" cover
+                    <v-img class="rounded" src="@/assets/img/readytosell.png" height="416" width="488" cover style="overflow: visible;">
+                        <v-img class="rounded" src="@/assets/img/readytosell2.jpeg" height="168" width="296" cover
                             style="position: absolute; bottom: -5%; left: -8%; overflow: visible;">
-                            <v-img src="@/assets/img/readytosell3.jpeg" height="80" width="96" cover
+                            <v-img class="rounded" src="@/assets/img/readytosell3.jpeg" height="80" width="96" cover
                                 style="position: absolute; bottom: 0; right: -35%"></v-img>
-                            <v-img src="@/assets/img/readytosell4.jpeg" height="80" width="96" cover
+                            <v-img class="rounded" src="@/assets/img/readytosell4.jpeg" height="80" width="96" cover
                                 style="position: absolute; bottom: 0; right: -70%"></v-img></v-img>
 
                     </v-img>

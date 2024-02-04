@@ -52,9 +52,9 @@ export default {
         drawer: null,
         isXs: false,
         items: [
-            { title: 'House', icon: 'mdi-home', link: '#' },
-            { title: 'Villa', icon: 'mdi-home', link: '#' },
-            { title: 'Apartment', icon: 'mdi-building', link: '#' },]
+            { title: 'About Us', icon: 'mdi-information', link: '#' },
+            { title: 'Article', icon: 'mdi-newspaper', link: '#' },
+            { title: 'Property', icon: 'mdi-building', link: '#' },]
     }),
     props: {
         color: String,

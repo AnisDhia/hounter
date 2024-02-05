@@ -4,7 +4,7 @@
 
         </v-img>
         <v-row justify="center" align="center">
-            <v-card flat class="rounded-xl pa-4 w-75" style="position: absolute; bottom:-25%;">
+            <v-card flat class="rounded-xl pa-4 w-75" style="position: absolute; bottom:-25%; box-shadow: 0px 9px 32px rgba(89.37, 91.53, 218.88, 0.05);">
                 <v-card-title style="color: #0E1735; font-weight: 600;">
                     {{ title }}
                 </v-card-title>

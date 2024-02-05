@@ -11,29 +11,30 @@
                 <h1 class="pl-2">Featured Houses</h1>
                 <v-spacer>
                 </v-spacer>
-                <v-btn height="48px" size="large" variant="tonal" rounded="xl" class="text-none mx-3 px-6" color="#10B981">
+                <v-btn height="48px" size="large" :variant="selected == 0 ? 'tonal' : 'outlined'" rounded="xl"
+                    class="text-none mx-3 px-6" :color="selected == 0 ? '#10B981' : '#888B97'" @click="filterHouses">
                     <template v-slot:prepend>
-                        <House />
+                        <House :color="selected == 0 ? '#10B981' : '#888B97'" />
                     </template>
                     House
                 </v-btn>
-                <v-btn height="48px" size="large" variant="outlined" rounded="xl" class="text-none mx-3 px-6"
-                    color="#888B97">
+                <v-btn height="48px" size="large" :variant="selected == 1 ? 'tonal' : 'outlined'" rounded="xl"
+                    class="text-none mx-3 px-6" :color="selected == 1 ? '#10B981' : '#888B97'" @click="filerVillas">
                     <template v-slot:prepend>
-                        <Villa />
+                        <Villa :color="selected == 1 ? '#10B981' : '#888B97'" />
                     </template>
                     Villa
                 </v-btn>
-                <v-btn height="48px" size="large" variant="outlined" rounded="xl" class="text-none mx-3 px-6"
-                    color="#888B97">
+                <v-btn height="48px" size="large" :variant="selected == 2 ? 'tonal' : 'outlined'" rounded="xl"
+                    class="text-none mx-3 px-6" :color="selected == 2 ? '#10B981' : '#888B97'" @click="filterApartments">
                     <template v-slot:prepend>
-                        <Apartment />
+                        <Apartment :color="selected == 2 ? '#10B981' : '#888B97'" />
                     </template>
                     Apartment
                 </v-btn>
                 <v-spacer></v-spacer>
-                <v-btn icon="mdi-chevron-left" flat class="mr-4" color="#E0E3EB"></v-btn>
-                <v-btn icon="mdi-chevron-right" flat color="#10B981"></v-btn>
+                <v-btn @click="swiperPrevSlide" icon="mdi-chevron-left" flat class="mr-4" color="#E0E3EB"></v-btn>
+                <v-btn @click="swiperNextSlide" icon="mdi-chevron-right" flat color="#10B981"></v-btn>
             </v-row>
             <!-- <v-toolbar>
                 <v-toolbar-title class="text-h5 font-weight-bold">
@@ -44,9 +45,9 @@
                     View All
                 </v-btn>
             </v-toolbar> -->
-            <swiper :modules="modules" :slides-per-view="3" :space-between="50" navigation loop="true" @swiper="onSwiper"
-                @slideChange="onSlideChange">
-                <swiper-slide v-for="(house, index) in featuredHouses" :key="index">
+            <swiper ref="swiperRef" :modules="modules" :slides-per-view="3" :space-between="50" navigation autoplay loop="true"
+                @swiper="onSwiper" @slideChange="onSlideChange">
+                <swiper-slide v-for="(house, index) in filteredList" :key="index">
                     <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"
                         :avatar-title="house.avatarTitle" :avatar-subtitle="house.avatarSubtitle"
                         :avatar-source="house.avatarSource" :tag="house.tag" />
@@ -57,17 +58,18 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 // import Swiper core and required modules
-import { Navigation, A11y } from 'swiper/modules';
+import { Navigation, A11y, Autoplay, Controller } from 'swiper/modules';
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/vue';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/scrollbar';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/a11y';
 
 import HouseCard from './HouseCard.vue';
 
@@ -87,7 +89,9 @@ export default {
         Apartment
     },
     data: () => ({
-        featuredHouses: [
+        selected: -1,
+        filteredList: [],
+        featured: [
             {
                 imgSource: "featured.jpeg",
                 title: "Roselands House",
@@ -95,7 +99,8 @@ export default {
                 avatarSource: "avatar1.jpeg",
                 avatarTitle: "Dianne Russell",
                 avatarSubtitle: "Manchester, Kentucky",
-                tag: "Popular"
+                tag: "Popular",
+                type: "house"
             },
             {
                 imgSource: "featured2.jpeg",
@@ -104,7 +109,8 @@ export default {
                 avatarSource: "avatar2.jpeg",
                 avatarTitle: "Robert Fox",
                 avatarSubtitle: "Dr. San Jose, South Dakota",
-                tag: "New House"
+                tag: "New House",
+                type: "house"
             },
             {
                 imgSource: "featured3.jpeg",
@@ -113,7 +119,8 @@ export default {
                 avatarSource: "avatar3.jpeg",
                 avatarTitle: "Ronald Richards",
                 avatarSubtitle: "Santa Ana, Illinois",
-                tag: "Best Deals"
+                tag: "Best Deals",
+                type: "house"
             },
             {
                 imgSource: "featured4.jpeg",
@@ -122,23 +129,127 @@ export default {
                 avatarSource: "avatar4.jpeg",
                 avatarTitle: "Jenny Wilson",
                 avatarSubtitle: "Preston Rd. Inglewood, Maine 98380",
-                tag: "Popular"
+                tag: "Popular",
+                type: "house"
             },
-        ]
+            {
+                imgSource: "featured5.jpg",
+                title: "Villa in White",
+                price: "35.000.000",
+                avatarSource: "avatar1.jpeg",
+                avatarTitle: "Dianne Russell",
+                avatarSubtitle: "Manchester, Kentucky",
+                tag: "Popular",
+                type: "villa"
+            },
+            {
+                imgSource: "featured6.jpg",
+                title: "Villa in the Woods",
+                price: "20.000.000",
+                avatarSource: "avatar7.jpeg",
+                avatarTitle: "Robert Fox",
+                avatarSubtitle: "Dr. San Jose, South Dakota",
+                tag: "New House",
+                type: "villa"
+            },
+            {
+                imgSource: "featured7.jpg",
+                title: "Villa in the City",
+                price: "44.000.000",
+                avatarSource: "avatar6.jpeg",
+                avatarTitle: "Ronald Richards",
+                avatarSubtitle: "Santa Ana, Illinois",
+                tag: "Best Deals",
+                type: "villa"
+            },
+            {
+                imgSource: "featured8.jpg",
+                title: "Apartment in the City",
+                price: "35.000.000",
+                avatarSource: "avatar1.jpeg",
+                avatarTitle: "Dianne Russell",
+                avatarSubtitle: "Manchester, Kentucky",
+                tag: "Popular",
+                type: "apartment"
+            },
+            {
+                imgSource: "featured9.jpg",
+                title: "Apartment in the Woods",
+                price: "20.000.000",
+                avatarSource: "avatar7.jpeg",
+                avatarTitle: "Robert Fox",
+                avatarSubtitle: "Dr. San Jose, South Dakota",
+                tag: "New House",
+                type: "apartment"
+            },
+            {
+                imgSource: "featured10.jpg",
+                title: "Apartment in the City",
+                price: "44.000.000",
+                avatarSource: "avatar6.jpeg",
+                avatarTitle: "Ronald Richards",
+                avatarSubtitle: "Santa Ana, Illinois",
+                tag: "Best Deals",
+                type: "apartment"
+            },
+            {
+                imgSource: "featured11.jpg",
+                title: "Apartment in the City",
+                price: "35.000.000",
+                avatarSource: "avatar1.jpeg",
+                avatarTitle: "Dianne Russell",
+                avatarSubtitle: "Manchester, Kentucky",
+                tag: "Popular",
+                type: "apartment"
+            },
+        ],
     }),
+    created() {
+        this.filteredList = this.featured;
+    },
     setup() {
+        const swiperInstance = ref();
+
         const onSwiper = (swiper) => {
             console.log(swiper);
+            swiperInstance.value = swiper;
         };
         const onSlideChange = () => {
             console.log('slide change');
         };
+
+
+        const swiperNextSlide = () => {
+            swiperInstance.value.slideNext();
+        };
+        const swiperPrevSlide = () => {
+            swiperInstance.value.slidePrev();
+        };
+
+        const swiper = useSwiper();
         return {
             onSwiper,
             onSlideChange,
-            modules: [Navigation, A11y],
+            modules: [Navigation, A11y, Autoplay, Controller],
+            swiper,
+            swiperNextSlide,
+            swiperPrevSlide
         };
     },
+    methods: {
+        filterHouses() {
+            this.filteredList = this.featured.filter((house) => house.type === "house");
+            this.selected = 0;
+        },
+        filerVillas() {
+            this.filteredList = this.featured.filter((house) => house.type === "villa");
+            this.selected = 1;
+        },
+        filterApartments() {
+            this.filteredList = this.featured.filter((house) => house.type === "apartment");
+            this.selected = 2;
+        }
+    }
 }
 </script>
 

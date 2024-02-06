@@ -1,8 +1,8 @@
 <template>
   <section id="hero">
     <v-row style="height: 100%;" class="content">
-      <v-col cols="6" align-self="center" class="pl-16">
-        <v-container class="text-hero ml-16 container">
+      <v-col cols="12" md="6" align-self="center" class="pl-0 pl-md-16 mt-16 mt-md-0">
+        <v-container class="text-hero ml-lg-16" style="width: 75%;">
           <h1 class="font-weight-bold hero-title">Find The Place To <br /> Live <span class="hero-title-outline">Your
               Dreams</span> <br /> Easily Here</h1>
           <p class="subtitle-1 hero-subtitle my-8 font-weight-light">Everything you need about finding your place to live
@@ -14,7 +14,7 @@
                 style="color: white;">Search<v-icon>mdi-chevron-right</v-icon></v-btn>
             </template>
             <template v-slot:prepend-inner>
-              <Location/>
+              <Location />
               <!-- <v-icon icon="fa:fas fa-lock" color="#F59E0B">mdi-map-marker</v-icon> -->
             </template>
           </v-text-field>
@@ -29,7 +29,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col cols="6" style="height: 100%;">
+      <v-col cols="6" style="height: 100%;" class="d-none d-md-flex">
         <v-img src="@/assets/img/hero.png" class="img-hero" cover>
         </v-img>
       </v-col>
@@ -75,6 +75,9 @@
 <script>
 import Location from '@/components/icons/location.vue'
 
+// import { computed } from 'vue'
+import { useDisplay } from 'vuetify';
+
 export default {
   name: 'HeroSection',
   components: {
@@ -88,6 +91,12 @@ export default {
       { src: '@/assets/img/traveloka.png' },
     ],
   }),
+  setup() {
+    const { mdAndDown } = useDisplay();
+    const { name } = useDisplay();
+    console.log(name + name.value)
+    return { mdAndDown };
+  },
 }
 </script>
 
@@ -115,10 +124,6 @@ export default {
 
 p {
   color: #626687;
-}
-
-.container {
-  width: 500px;
 }
 
 .blur1 {

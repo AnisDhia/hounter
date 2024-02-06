@@ -14,7 +14,7 @@
                 </div>
             </div>
         </v-row>
-        <swiper :modules="modules" :slides-per-view="2" :space-between="50" autoplay loop="true" @swiper="onSwiper"
+        <swiper :modules="modules" :slides-per-view="this.$vuetify.display.width < 1000 ? 1 : 2" :space-between="50" autoplay loop="true" @swiper="onSwiper"
             @slideChange="onSlideChange" style="overflow: visible">
             <swiper-slide v-for="(review, index) in reviews" :key="index">
                 <ReviewCard :img-file="review.imgFile" :author-img="review.authorImg" :author="review.author"
@@ -38,6 +38,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import ReviewCard from './ReviewCard.vue';
+
+import { useDisplay } from 'vuetify';
 
 export default {
     name: 'ReviewsSection',
@@ -96,7 +98,10 @@ export default {
         const onSlideChange = () => {
             console.log('slide change');
         };
+        const { smAndDown } = useDisplay();
+
         return {
+            smAndDown,
             onSwiper,
             onSlideChange,
             modules: [Navigation, A11y, Pagination, Autoplay],

@@ -7,7 +7,7 @@
       <RecommendedSection />
       <ReadyToSellSection />
       <ReviewsSection />
-      <TipsAndTricksSection />
+      <TipsAndTricksSection class="h-auto" />
       <Subscribe />
     </v-main>
     <v-scale-transition>

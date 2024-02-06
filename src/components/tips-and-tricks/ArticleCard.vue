@@ -15,7 +15,7 @@
                         </p>
                     </div>
                 </v-card-title>
-                <v-card-text>
+                <v-card-text style="line-height: 1.5;">
                     <h3>{{ title }}</h3>
                 </v-card-text>
                 <v-card-actions>

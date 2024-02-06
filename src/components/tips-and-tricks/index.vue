@@ -26,7 +26,7 @@
                         :title="article.title" :date="article.date" :readTime="article.readTime" />
                 </v-container>
             </v-col>
-            <v-col cols="6 d-none d-md-flex">
+            <v-col cols="6 d-none d-lg-flex">
                 <v-container>
                     <v-card flat class="rounded-xl" width="560" href="#articles">
                         <v-img src="@/assets/img/article.jpeg" height="280" class="rounded-xl mb-6" cover />

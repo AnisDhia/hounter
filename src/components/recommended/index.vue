@@ -1,5 +1,5 @@
 <template>
-    <section id="recommended">
+    <section id="recommended" class="">
         <v-container>
             <div class="mb-4" style="height: 18px; position: relative">
                 <div style="left: 0px; top: 0px; position: absolute; color: #F59E0B; font-size: 14px; font-weight: 500;">
@@ -33,8 +33,8 @@
                     Apartment
                 </v-btn>
                 <v-spacer></v-spacer>
-                <v-btn @click="swiperPrevSlide" icon="mdi-chevron-left" flat class="mr-4" color="#E0E3EB"></v-btn>
-                <v-btn @click="swiperNextSlide" icon="mdi-chevron-right" flat color="#10B981"></v-btn>
+                <v-btn @click="swiperPrevSlide" icon="mdi-chevron-left" flat class="mr-4 d-none d-md-flex" color="#E0E3EB"></v-btn>
+                <v-btn @click="swiperNextSlide" icon="mdi-chevron-right" flat class="d-none d-md-flex" color="#10B981"></v-btn>
             </v-row>
             <!-- <v-toolbar>
                 <v-toolbar-title class="text-h5 font-weight-bold">
@@ -45,7 +45,7 @@
                     View All
                 </v-btn>
             </v-toolbar> -->
-            <swiper ref="swiperRef" :modules="modules" :slides-per-view="3" :space-between="50" navigation autoplay loop="true"
+            <swiper ref="swiperRef" :modules="modules" :slides-per-view="this.$vuetify.display.width < 600 ? 1 : this.$vuetify.display.width < 760 ? 2 : 3" :space-between="50" navigation autoplay loop="true"
                 @swiper="onSwiper" @slideChange="onSlideChange">
                 <swiper-slide v-for="(house, index) in filteredList" :key="index">
                     <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"

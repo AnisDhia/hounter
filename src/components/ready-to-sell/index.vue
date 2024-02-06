@@ -15,7 +15,7 @@
                     <p class="subtitle-1 hero-subtitle my-6 font-weight-light">Houses recommended by our partners that have
                         been <br /> curated to become the home of your dreams</p>
                     <h3>House Detail</h3>
-                    <v-row class="mt-4">
+                    <v-row class="mt-4" align="center">
                         <v-col>
                             <div class="mb-6">
                                 <Bed class="mr-4" />
@@ -61,7 +61,7 @@
                     </v-row>
                 </v-container>
             </v-col>
-            <v-col class="d-flex justify-center" cols="12" md="6">
+            <v-col class="d-none d-md-flex justify-center" cols="12" md="6">
                 <v-container class="w-auto">
                     <v-img class="rounded" src="@/assets/img/readytosell.png" height="416" width="488" cover
                         style="overflow: visible;">
@@ -71,7 +71,6 @@
                                 style="position: absolute; bottom: 0; right: -35%"></v-img>
                             <v-img class="rounded" src="@/assets/img/readytosell4.jpeg" height="80" width="96" cover
                                 style="position: absolute; bottom: 0; right: -70%"></v-img></v-img>
-
                     </v-img>
                 </v-container>
             </v-col>
@@ -129,8 +128,8 @@ export default {
         Car,
         Phone
     },
-    mounted () {
-      console.log(this.$vuetify.display.mobile)
+    mounted() {
+        console.log(this.$vuetify.display.mobile)
     },
 }
 </script>

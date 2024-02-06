@@ -20,7 +20,7 @@
                     </v-row>
                 </v-container>
             </v-col>
-            <v-col class="d-flex justify-center w-50" cols="12" md="6">
+            <v-col class="d-flex" cols="12" md="6">
                 <v-col>
                     <h3>Property</h3>
                     <p>House</p>
@@ -61,5 +61,9 @@ export default {
      font-size: 18px;
      font-weight: 600;
      color: #0E1735;
+ }
+
+ p {
+    margin-top: 14px;
  }
 </style>

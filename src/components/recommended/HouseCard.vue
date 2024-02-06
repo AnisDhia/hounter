@@ -31,7 +31,7 @@
                         {{ avatarSubtitle }}
                     </p>
                 </v-col>
-               
+
             </v-row>
         </v-card-actions>
     </v-card>
@@ -41,6 +41,9 @@
 import Fire from '@/components/icons/fire.vue';
 import Home from '@/components/icons/house-blue.vue';
 import Wallet from '@/components/icons/wallet.vue';
+
+// import { useDisplay } from 'vuetify';
+
 
 export default {
     name: "HouseCard",

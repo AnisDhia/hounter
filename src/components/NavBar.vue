@@ -4,12 +4,29 @@
             <v-img src="@/assets/logo.svg" max-height="40" contain />
             <v-divider class="my-4" />
             <v-list dense>
+                <v-list-subheader>LINKS</v-list-subheader>
                 <v-list-item v-for="(item, i) in items" :key="i" link :to="item.link">
-                    <v-list-item-icon>
+                    <template v-slot:prepend>
                         <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
+                    </template>
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
+                <v-menu>
+                    <template v-slot:activator="{ props }">
+                        <v-list-item v-bind=props>
+                            <template v-slot:prepend>
+                                <v-icon>mdi-home</v-icon>
+                            </template>
+                            <v-list-item-title>Property</v-list-item-title>
+                        </v-list-item>
+                    </template>
+                    <v-list-item v-for="(item, i) in properties" :key="i" link :to="item.link">
+                        <template v-slot:prepend>
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </template>
+                        <v-list-item-title>{{ item.type }}</v-list-item-title>
+                    </v-list-item>
+                </v-menu>
             </v-list>
         </v-container>
     </v-navigation-drawer>
@@ -62,7 +79,13 @@ export default {
         items: [
             { title: 'About Us', icon: 'mdi-information', link: '#' },
             { title: 'Article', icon: 'mdi-newspaper', link: '#' },
-            { title: 'Property', icon: 'mdi-apartment', link: '#' },]
+        ],
+        properties: [
+            { type: 'House', icon: 'mdi-home'},
+            { type: 'Villa', icon: 'mdi-home'},
+            { type: 'Apartment', icon: 'mdi-home'},
+
+        ]
     }),
     props: {
         color: String,

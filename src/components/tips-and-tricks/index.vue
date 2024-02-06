@@ -49,7 +49,7 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-row justify="start" align="center">
-                                <Clock class="mr-3" />
+                                <Clock class="mr-3 ml-1" />
                                 <p style="color: #888B97; font-weight: 300; font-size: 14px;">
                                     8 min read | 25 Apr 2021
                                 </p>
@@ -64,11 +64,13 @@
 
 <script>
 import ArticleCard from './ArticleCard.vue'
+import Clock from '../icons/clock.vue'
 
 export default {
     name: 'TipsAndTricksSection',
     components: {
-        ArticleCard
+        ArticleCard,
+        Clock
     },
     data: () => ({
         articles: [

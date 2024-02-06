@@ -66,6 +66,8 @@
 import ArticleCard from './ArticleCard.vue'
 import Clock from '../icons/clock.vue'
 
+import { useDisplay } from 'vuetify/lib/framework.mjs';
+
 export default {
     name: 'TipsAndTricksSection',
     components: {
@@ -100,5 +102,9 @@ export default {
             }
         ]
     }),
+    setup() {
+        const { smAndDown } = useDisplay();
+        return { smAndDown };
+    }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section :style="{ 'height': smAndDown ? 'auto' : '100vh' }">
         <v-row class="h-100 content" justify="center" align="center">
             <v-col class="d-flex justify-center w-50" cols="12" md="6">
                 <v-container style=" width: auto;">
@@ -50,23 +50,25 @@
                                     Manager Director
                                 </p>
                             </v-col>
-                            <v-btn height="48px" size="large" variant="flat" rounded="xl" class="text-none" color="#10B981"
+                            <v-btn height="48px" size="large" variant="flat" rounded="xl" class="text-none d-none d-md-flex" color="#10B981"
                                 style="color: white;">
                                 <template v-slot:prepend>
                                     <Phone class="mx-3" />
                                 </template>
                                 Contact Now
                             </v-btn>
+                            <v-btn variant="flat" rounded="xl" class="d-md-none" color="#10B981" icon="mdi-phone">
+                            </v-btn>
                         </v-row>
                     </v-row>
                 </v-container>
             </v-col>
-            <v-col class="d-none d-md-flex justify-center" cols="12" md="6">
-                <v-container class="w-auto">
-                    <v-img class="rounded" src="@/assets/img/readytosell.png" height="416" width="488" cover
-                        style="overflow: visible;">
-                        <v-img class="rounded" src="@/assets/img/readytosell2.jpeg" height="168" width="296" cover
-                            style="position: absolute; bottom: -10%; left: -8%; overflow: visible;">
+            <v-col class=" justify-center" cols="12" md="6">
+                <v-container class="w-auto mx-auto">
+                    <v-img class="rounded" src="@/assets/img/readytosell.png" :height="smAndDown ? auto : 416" :width="smAndDown  ? auto : 488"
+                        cover style="overflow: visible;">
+                        <v-img class="rounded d-none d-md-flex" src="@/assets/img/readytosell2.jpeg" height="168"
+                            width="296" cover style="position: absolute; bottom: -10%; left: -8%; overflow: visible;">
                             <v-img class="rounded" src="@/assets/img/readytosell3.jpeg" height="80" width="96" cover
                                 style="position: absolute; bottom: 0; right: -35%"></v-img>
                             <v-img class="rounded" src="@/assets/img/readytosell4.jpeg" height="80" width="96" cover
@@ -119,6 +121,8 @@ import Floors from '@/components/icons/floors.vue';
 import Car from '@/components/icons/car.vue';
 import Phone from '@/components/icons/phone.vue';
 
+import { useDisplay } from 'vuetify';
+
 export default {
     name: 'ReadyToSellSection',
     components: {
@@ -130,6 +134,10 @@ export default {
     },
     mounted() {
         console.log(this.$vuetify.display.mobile)
+    },
+    setup() {
+        const { smAndDown } = useDisplay();
+        return { smAndDown };
     },
 }
 </script>

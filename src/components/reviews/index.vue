@@ -1,21 +1,21 @@
 <template>
-    <section>
+    <section class="" :style="{ 'height': smAndDown ? 'auto' : '100vh'}">
         <v-row justify="center" class="my-10">
-            <div style="width: 463px; height: 79px; position: relative">
-                <div
-                    style="left: 0px; top: 39px; position: absolute; text-align: center; color: #1B1C57; font-size: 32px; font-family: Lexend; font-weight: 600; text-transform: capitalize; word-wrap: break-word">
-                    What Our User Say About Us</div>
-                <div style="width: 107px; height: 27px; left: 178px; top: 0px; position: absolute">
-                    <div
-                        style="left: 0px; top: 9px; position: absolute; text-align: center; color: #F59E0B; font-size: 14px; font-family: Lexend; font-weight: 500; text-transform: capitalize; word-wrap: break-word">
-                        See Our Review</div>
-                    <div style="width: 32px; height: 1px; left: 34px; top: 0px; position: absolute; background: #F59E0B">
+            <v-col class="text-center" cols="12" md="4">
+                <v-row justify="center" class="mb-2">
+                    <div style="width: 32px; height: 1px; background: #F59E0B;">
                     </div>
+                </v-row>
+                <div style="text-align: center; color: #F59E0B; font-size: 14px; font-family: Lexend; font-weight: 500;">
+                    See Our Reviews
                 </div>
-            </div>
+                <h1 style="text-align: center; color: #1B1C57; font-size: 32px; font-weight: 600;">
+                    See What Our User Say About Us
+                </h1>
+            </v-col>
         </v-row>
-        <swiper :modules="modules" :slides-per-view="this.$vuetify.display.width < 1000 ? 1 : 2" :space-between="50" autoplay loop="true" @swiper="onSwiper"
-            @slideChange="onSlideChange" style="overflow: visible">
+        <swiper :modules="modules" :slides-per-view="smAndDown ? 1 : 2" :space-between="50" autoplay loop="true" @swiper="onSwiper"
+            @slideChange="onSlideChange" >
             <swiper-slide v-for="(review, index) in reviews" :key="index">
                 <ReviewCard :img-file="review.imgFile" :author-img="review.authorImg" :author="review.author"
                     :author-role="review.authorRole" :title="review.title" :review="review.review"
@@ -35,7 +35,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css/pagination';
 
 import ReviewCard from './ReviewCard.vue';
 

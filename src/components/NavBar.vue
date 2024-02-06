@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="drawer" app temporary class="elevation-0">
+    <v-navigation-drawer v-model="drawer" app temporary class="elevation-0 mb-0">
         <v-container>
             <v-img src="@/assets/logo.svg" max-height="40" contain />
             <v-divider class="my-4" />
@@ -35,7 +35,7 @@
         <v-toolbar-title>
             <v-img src="@/assets/logo.svg" max-height="40" contain />
         </v-toolbar-title>
-        <v-spacer />
+        <v-spacer class="d-none d-md-flex" />
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="mr-4" v-if="mdAndDown" />
         <v-row v-else justify="center" align="center">
             <v-btn border variant="tonal" size="small" density="default" rounded="xl" class="mr-4 text-none white-border"

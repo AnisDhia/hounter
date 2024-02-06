@@ -1,17 +1,18 @@
 <template>
   <!-- <SpeedInsights /> -->
   <v-app>
-    <NavBar :color="color" :flat="flat"/>
-    <v-main class="pt-0">
+    <NavBar :color="color" :flat="flat" />
+    <v-main class="pa-0 ma-0">
       <HeroSection />
       <RecommendedSection />
       <ReadyToSellSection />
       <ReviewsSection />
-      <TipsAndTricksSection class="h-auto" />
+      <TipsAndTricksSection class="h-auto mt-10" />
       <Subscribe />
     </v-main>
     <v-scale-transition>
-      <v-btn icon="mdi-chevron-up" v-show="fab" v-scroll="onScroll" color="#10B981" class="mb-4" @click="toTop" style="position: fixed; bottom: 0; right: 5%; z-index: 9999;">
+      <v-btn icon="mdi-chevron-up" v-show="fab" v-scroll="onScroll" color="#10B981" class="mb-4" @click="toTop"
+        style="position: fixed; bottom: 0; right: 5%; z-index: 9999;">
       </v-btn>
     </v-scale-transition>
     <Footer />

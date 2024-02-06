@@ -1,9 +1,9 @@
 <template>
     <v-card flat class="rounded-xl" href="#articles">
         <div class="d-block d-md-flex">
-            <v-img :src="require('@/assets/img/' + thumbNail)" max-height="144" :width="smAndDown ? '100%' : 200" class="rounded-xl" cover>
+            <v-img :src="require('@/assets/img/' + thumbNail)" :width="smAndDown ? '100%' : 200" class="rounded-xl" cover>
             </v-img>
-            <div class="ml-4">
+            <div class="ml-md-4 mt-2 mt-md-0">
                 <v-card-title>
                     <div class="d-flex" style="align-items: center;">
                         <v-avatar class="mr-3">

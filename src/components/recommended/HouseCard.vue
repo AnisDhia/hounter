@@ -1,6 +1,6 @@
 <template>
     <v-card flat class="rounded-xl" max-width="344" href="#recommended">
-        <v-img :src="require('@/assets/img/' + imgSource)" height="400px" cover class="rounded-xl">
+        <v-img :src="require('@/assets/img/' + imgSource)" :height="smAndDown ? '300px' : '400px'" cover class="rounded-xl">
             <v-chip class="ma-4" style="position: absolute; bottom: 0;" :color="chipBackground(tag)" variant="flat">
                 <!-- <v-icon class="mr-2" left :color="chipColor(tag)">{{ chipIcon(tag) }}</v-icon> -->
                 <Fire v-if="tag == 'Popular'" />
@@ -42,7 +42,7 @@ import Fire from '@/components/icons/fire.vue';
 import Home from '@/components/icons/house-blue.vue';
 import Wallet from '@/components/icons/wallet.vue';
 
-// import { useDisplay } from 'vuetify';
+import { useDisplay } from 'vuetify';
 
 
 export default {
@@ -64,6 +64,10 @@ export default {
     data: () => ({
 
     }),
+    setup() {
+        const { smAndDown } = useDisplay();
+        return { smAndDown };
+    },
     methods: {
         chipColor(tag) {
             if (tag === "Popular") {

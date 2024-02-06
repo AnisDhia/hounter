@@ -1,6 +1,6 @@
 <template>
-    <v-footer >
-        <v-row class="h-100" justify="center" align="center">
+    <v-footer>
+        <v-row class="h-100" justify="center" align="center" style="z-index: 1;">
             <v-col class="d-flex justify-center w-50" cols="12" md="6">
                 <v-container style="width: auto;">
                     <v-img src="@/assets/logo.svg" width="auto" height="50" contain />
@@ -20,21 +20,21 @@
                     </v-row>
                 </v-container>
             </v-col>
-            <v-col class="d-flex" cols="12" md="6">
-                <v-col>
+            <v-col class="d-block d-md-flex" cols="12" md="6">
+                <v-col :class="{'text-center': smAndDown}">
                     <h3>Property</h3>
                     <p>House</p>
                     <p>Villa</p>
                     <p>Apartment</p>
                 </v-col>
-                <v-col>
+                <v-col :class="{'text-center': smAndDown}">
                     <h3>Article</h3>
                     <p>New Article</p>
                     <p>Popular Article</p>
                     <p>Most Read</p>
                     <p>Tips & Tricks</p>
                 </v-col>
-                <v-col cols="5">
+                <v-col :class="{'text-center': smAndDown}" cols="12" md="5">
                     <h3>Contact</h3>
                     <p>2464 Royal Ln, Mesa, New Jersy 45463</p>
                     <p>(671) 555-0110</p>
@@ -81,8 +81,13 @@
 </template>
 
 <script>
+import { useDisplay } from 'vuetify/lib/framework.mjs';
 export default {
     name: 'FooterSection',
+    setup() {
+        const { smAndDown } = useDisplay();
+        return { smAndDown };
+    }
 };
 </script>
 
@@ -104,7 +109,7 @@ export default {
 
  .blur {
      position: absolute;
-     bottom: 0;
+     bottom: -10%;
      right: 0;
      /* width: 100%; */
      /* height: 100%; */
@@ -113,9 +118,10 @@ export default {
 
  .blur2 {
      position: absolute;
-     bottom: 0;
+     bottom: -10%;
      right: 0;
      /* width: 100%; */
      /* height: 100%; */
      z-index: 0;
- }</style>
+ }
+</style>

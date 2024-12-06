@@ -1,66 +1,54 @@
 <template>
-    <section id="recommended" class="my-6 my-md-0" :style="{'height': smAndDown ? 'auto' : '100vh'}">
-        <v-container>
-            <div class="mb-4" style="height: 18px; position: relative">
-                <div style="left: 0px; top: 0px; position: absolute; color: #F59E0B; font-size: 14px; font-weight: 500;">
-                    Our Recommendation</div>
-                <div style="width: 32px; height: 1px; left: -42px; top: 8px; position: absolute; background: #F59E0B">
-                </div>
-            </div>
-            <v-row class="mt-4 mb-8">
-                <h1 class="pl-2">Featured Houses</h1>
-                <v-spacer>
-                </v-spacer>
-                <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'" :variant="selected == 0 ? 'tonal' : 'outlined'" rounded="xl"
-                    class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 0 ? '#10B981' : '#888B97'"
-                    @click="filterHouses">
-                    <template v-slot:prepend>
-                        <House :color="selected == 0 ? '#10B981' : '#888B97'" />
-                    </template>
-                    House
-                </v-btn>
-                <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'" :variant="selected == 1 ? 'tonal' : 'outlined'" rounded="xl"
-                    class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 1 ? '#10B981' : '#888B97'"
-                    @click="filerVillas">
-                    <template v-slot:prepend>
-                        <Villa :color="selected == 1 ? '#10B981' : '#888B97'" />
-                    </template>
-                    Villa
-                </v-btn>
-                <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'" :variant="selected == 2 ? 'tonal' : 'outlined'" rounded="xl"
-                    class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 2 ? '#10B981' : '#888B97'"
-                    @click="filterApartments">
-                    <template v-slot:prepend>
-                        <Apartment :color="selected == 2 ? '#10B981' : '#888B97'" />
-                    </template>
-                    Apartment
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn @click="swiperPrevSlide" icon="mdi-chevron-left" flat class="mr-4 d-none d-md-flex"
-                    color="#E0E3EB"></v-btn>
-                <v-btn @click="swiperNextSlide" icon="mdi-chevron-right" flat class="d-none d-md-flex"
-                    color="#10B981"></v-btn>
-            </v-row>
-            <!-- <v-toolbar>
-                <v-toolbar-title class="text-h5 font-weight-bold">
-                    <h1>Featured Houses</h1>
-                </v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-btn text color="primary">
-                    View All
-                </v-btn>
-            </v-toolbar> -->
-            <!-- this.$vuetify.display.width < 600 ? 1 : this.$vuetify.display.width < 760 ? 2 : 3 -->
-            <swiper ref="swiperRef" :modules="modules"
-                :slides-per-view="xs ? 1 : sm ? 2 : 3"
-                :space-between="50" navigation autoplay loop="true" @swiper="onSwiper" @slideChange="onSlideChange">
-                <swiper-slide v-for="(house, index) in filteredList" :key="index">
-                    <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"
-                        :avatar-title="house.avatarTitle" :avatar-subtitle="house.avatarSubtitle"
-                        :avatar-source="house.avatarSource" :tag="house.tag" />
-                </swiper-slide>
-            </swiper>
-        </v-container>
+    <section id="recommended" class="my-6 my-md-0" :style="{ 'height': smAndDown ? 'auto' : '100vh' }">
+        <div class="d-flex align-center" style="position: relative">
+            <div class="mr-2" style="width: 3%; height: 1px; position: relative; background: #F59E0B" />
+            <div style="color: #F59E0B; font-size: 14px; font-weight: 500;">
+                Our Recommendation</div>
+        </div>
+        <v-row class="mt-4 mb-8" style="padding-left: 3%;">
+            <h1 class="pl-2">Featured Houses</h1>
+            <v-spacer>
+            </v-spacer>
+            <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'"
+                :variant="selected == 0 ? 'tonal' : 'outlined'" rounded="xl"
+                class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 0 ? '#10B981' : '#888B97'"
+                @click="filterHouses">
+                <template v-slot:prepend>
+                    <House :color="selected == 0 ? '#10B981' : '#888B97'" />
+                </template>
+                House
+            </v-btn>
+            <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'"
+                :variant="selected == 1 ? 'tonal' : 'outlined'" rounded="xl"
+                class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 1 ? '#10B981' : '#888B97'"
+                @click="filerVillas">
+                <template v-slot:prepend>
+                    <Villa :color="selected == 1 ? '#10B981' : '#888B97'" />
+                </template>
+                Villa
+            </v-btn>
+            <v-btn :height="smAndDown ? '32px' : '48px'" :size="smAndDown ? 'small' : 'large'"
+                :variant="selected == 2 ? 'tonal' : 'outlined'" rounded="xl"
+                class="text-none mx-1 mx-md-3 px-4 px-md-6 my-1 my-md-0" :color="selected == 2 ? '#10B981' : '#888B97'"
+                @click="filterApartments">
+                <template v-slot:prepend>
+                    <Apartment :color="selected == 2 ? '#10B981' : '#888B97'" />
+                </template>
+                Apartment
+            </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn @click="swiperPrevSlide" icon="mdi-chevron-left" flat class="mr-4 d-none d-md-flex"
+                color="#E0E3EB"></v-btn>
+            <v-btn @click="swiperNextSlide" icon="mdi-chevron-right" flat class="d-none d-md-flex" color="#10B981"></v-btn>
+        </v-row>
+        <swiper ref="swiperRef" :modules="modules" :slides-per-view="xs ? 1 : sm ? 2 : 3" :space-between="50" autoplay
+            loop="true" @swiper="onSwiper" @slideChange="onSlideChange" style="padding-left: 3%;">
+            <swiper-slide v-for="(house, index) in filteredList" :key="index">
+                <HouseCard :img-source="house.imgSource" :title="house.title" :price="house.price"
+                    :avatar-title="house.avatarTitle" :avatar-subtitle="house.avatarSubtitle"
+                    :avatar-source="house.avatarSource" :tag="house.tag" />
+            </swiper-slide>
+        </swiper>
     </section>
 </template>
 
@@ -68,7 +56,7 @@
 import { ref } from 'vue';
 
 // import Swiper core and required modules
-import { Navigation, A11y, Autoplay, Controller } from 'swiper/modules';
+import { A11y, Autoplay, Controller } from 'swiper/modules';
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/vue';
@@ -240,7 +228,7 @@ export default {
         return {
             onSwiper,
             onSlideChange,
-            modules: [Navigation, A11y, Autoplay, Controller],
+            modules: [A11y, Autoplay, Controller],
             swiper,
             swiperNextSlide,
             swiperPrevSlide,
@@ -274,6 +262,11 @@ h1 {
     color: #1B1C57;
 }
 
+.v-btn {
+    transition: .3s ease-in-out;
+}
+
 .section-height {
     height: auto;
-}</style>
+}
+</style>

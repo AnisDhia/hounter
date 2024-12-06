@@ -1,5 +1,5 @@
 <template>
-    <section class="" :style="{ 'height': smAndDown ? 'auto' : '100vh'}">
+    <section class="px-0" :style="{ 'height': smAndDown ? 'auto' : '100vh'}">
         <v-row justify="center" class="my-10">
             <v-col class="text-center" cols="12" md="4">
                 <v-row justify="center" class="mb-2">

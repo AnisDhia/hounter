@@ -98,5 +98,6 @@ section {
   position: relative;
   z-index: 1;
   overflow: visible;
+  padding: 5% 10%;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <v-card flat class="rounded-xl" max-width="344" href="#recommended">
-        <v-img :src="require('@/assets/img/' + imgSource)" :height="smAndDown ? '300px' : '400px'" cover class="rounded-xl">
+    <v-card flat class="rounded-xl" href="#recommended">
+        <v-img :src="require('@/assets/img/' + imgSource)" :aspect-ratio=".9" cover class="rounded-xl">
             <v-chip class="ma-4" style="position: absolute; bottom: 0;" :color="chipBackground(tag)" variant="flat">
                 <!-- <v-icon class="mr-2" left :color="chipColor(tag)">{{ chipIcon(tag) }}</v-icon> -->
                 <Fire v-if="tag == 'Popular'" />

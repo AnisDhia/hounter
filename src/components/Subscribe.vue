@@ -1,5 +1,5 @@
 <template>
-    <section class="" style=" padding-top: 6%;" :style="{ 'height': smAndDown ? 'auto' : '75vh'} ">
+    <section class="" style=" padding: 10% 0%;" :style="{ 'height': smAndDown ? 'auto' : '75vh'} ">
         <v-row align="center" justify="center" class="fill-height" :class="{ 'background': !smAndDown }">
             <v-col cols="10" md="4" class="text-center">
                 <h1 style="color: #0E1735; font-weight: 600; text-align: center; line-height: 1.5;" class="mb-4">

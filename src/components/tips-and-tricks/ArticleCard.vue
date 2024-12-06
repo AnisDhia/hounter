@@ -1,8 +1,8 @@
 <template>
     <v-card flat class="rounded-xl" href="#articles">
         <div class="d-block d-md-flex">
-            <v-img :src="require('@/assets/img/' + thumbNail)" :width="smAndDown ? '100%' : 200" class="rounded-xl" cover>
-            </v-img>
+            <v-img :src="require('@/assets/img/' + thumbNail)" :aspect-ratio="1.3" :width="smAndDown ? '100%' : '35%'"
+                class="rounded-xl" cover />
             <div class="ml-md-4 mt-2 mt-md-0">
                 <v-card-title>
                     <div class="d-flex" style="align-items: center;">
@@ -10,7 +10,6 @@
                             <v-img :src="require('@/assets/img/' + authorImg)" alt="avatar"></v-img>
                         </v-avatar>
                         <p style="color: #0E1735;">
-
                             {{ author }}
                         </p>
                     </div>
@@ -19,7 +18,7 @@
                     <h3>{{ title }}</h3>
                 </v-card-text>
                 <v-card-actions>
-                    <v-row justify="start" align="center" class="ml-4">
+                    <v-row justify="start" align="center" class="ml-4 mx-4">
                         <Clock class="mr-3" />
                         <p style="color: #888B97; font-weight: 300; font-size: 14px;">
                             {{ readTime + ' | ' + date }}

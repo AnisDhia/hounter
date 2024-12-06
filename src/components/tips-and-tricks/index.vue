@@ -19,44 +19,42 @@
                 <!-- </v-row> -->
             </v-col>
         </v-row>
-        <v-row class="pl-md-16">
-            <v-col class="pl-md-16">
-                <v-container v-for="article in articles" :key="article.title" cols="12" md="6" lg="4">
+        <v-row>
+            <v-col cols="12" md="6">
+                <div v-for="article in articles" :key="article.title" class="my-4">
                     <ArticleCard :thumbNail="article.thumbNail" :authorImg="article.authorImg" :author="article.author"
                         :title="article.title" :date="article.date" :readTime="article.readTime" />
-                </v-container>
+                </div>
             </v-col>
-            <v-col cols="6 d-none d-lg-flex">
-                <v-container>
-                    <v-card flat class="rounded-xl" width="560" href="#articles">
-                        <v-img src="@/assets/img/article.jpeg" height="280" class="rounded-xl mb-6" cover />
-                        <div class="d-flex" style="align-items: center;">
-                            <v-avatar class="mr-4">
-                                <v-img src="@/assets/img/avatar9.jpeg" alt="avatar"></v-img>
-                            </v-avatar>
-                            <p style="color: #0E1735;">
-                                Cameron Williamson
+            <v-col cols="6" class="d-none d-lg-flex">
+                <v-card flat class="rounded-xl" href="#articles">
+                    <v-img src="@/assets/img/article.jpeg" :aspect-ratio="2" class="rounded-xl mb-6" cover />
+                    <div class="d-flex" style="align-items: center;">
+                        <v-avatar class="mr-4">
+                            <v-img src="@/assets/img/avatar9.jpeg" alt="avatar"></v-img>
+                        </v-avatar>
+                        <p style="color: #0E1735;">
+                            Cameron Williamson
+                        </p>
+                    </div>
+                    <v-card-title class="pl-0">
+                        <h3 style="color: #1B1C57; font-weight: 600; font-size: 20px;">
+                            12 Things To Know Before Buying A House
+                        </h3>
+                    </v-card-title>
+                    <v-card-text class="pl-0" style="color: #888B97; font-weight: 400; font-size: 14">
+                        Want to buy a house but are unsure about what we should know, here I will try to explain what we
+                        should know and check when we want to buy a house
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-row justify="start" align="center">
+                            <Clock class="mr-3 ml-1" />
+                            <p style="color: #888B97; font-weight: 300; font-size: 14px;">
+                                8 min read | 25 Apr 2021
                             </p>
-                        </div>
-                        <v-card-title class="pl-0">
-                            <h3 style="color: #1B1C57; font-weight: 600; font-size: 20px;">
-                                12 Things To Know Before Buying A House
-                            </h3>
-                        </v-card-title>
-                        <v-card-text class="pl-0" style="color: #888B97; font-weight: 400; font-size: 14">
-                            Want to buy a house but are unsure about what we should know, here I will try to explain what we
-                            should know and check when we want to buy a house
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-row justify="start" align="center">
-                                <Clock class="mr-3 ml-1" />
-                                <p style="color: #888B97; font-weight: 300; font-size: 14px;">
-                                    8 min read | 25 Apr 2021
-                                </p>
-                            </v-row>
-                        </v-card-actions>
-                    </v-card>
-                </v-container>
+                        </v-row>
+                    </v-card-actions>
+                </v-card>
             </v-col>
         </v-row>
     </section>

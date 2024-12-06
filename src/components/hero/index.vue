@@ -31,7 +31,35 @@
         </div>
       </v-col>
       <v-col cols="6" style="height: 100%; padding-top: 0;" class="d-none d-md-flex">
+
         <v-img src="@/assets/img/hero.png" class="img-hero" cover>
+          <div class="marquee-container">
+            <Vue3Marquee>
+              <template v-for="card in cards" :key="card.title">
+                <v-card flat class="d-flex mx-2 ga-4 pa-8 align-center" rounded="xl">
+                  <template v-for="(image, index) in card.images" :key="image">
+                    <v-avatar :style="{
+                      marginLeft: index > 0 ? '-32px' : '-0',
+                      border: '4px solid white',
+                      boxShadow: '-3px 10px 12px rgba(0,0,0,0.10)',
+                      zIndex: card.images.length - index
+                    }" size="64">
+                      <v-img :src="require('@/assets/img/' + image)" alt="avatar" cover></v-img>
+                    </v-avatar>
+                  </template>
+                  <div>
+                    <p style="color: #0E1735; font-size: 20px" class="">
+                      {{ card.title }}
+                    </p>
+
+                    <p style="color: #3C4563; font-size: 16px;" class="">
+                      {{ card.subtitle }}
+                    </p>
+                  </div>
+                </v-card>
+              </template>
+            </Vue3Marquee>
+          </div>
         </v-img>
       </v-col>
     </div>
@@ -77,6 +105,7 @@
 
 <script>
 import Location from '@/components/icons/location.vue'
+import { Vue3Marquee } from 'vue3-marquee';
 
 // import { computed } from 'vue'
 import { useDisplay } from 'vuetify';
@@ -84,7 +113,8 @@ import { useDisplay } from 'vuetify';
 export default {
   name: 'HeroSection',
   components: {
-    Location
+    Location,
+    Vue3Marquee
   },
   data: () => ({
     partnerLogos: [
@@ -93,6 +123,31 @@ export default {
       { src: '@/assets/img/tiketcom.png' },
       { src: '@/assets/img/traveloka.png' },
     ],
+    cards: [
+      {
+        images: [
+          'avatar5.jpeg',
+          'avatar6.jpeg',
+          'avatar3.jpeg'
+        ],
+        title: '1K+ People',
+        subtitle: 'Successfully Getting Home'
+      },
+      {
+        images: [
+          'featured6.jpg',
+        ],
+        title: '56 Houses',
+        subtitle: 'Sold Monthly'
+      },
+      {
+        images: [
+          'avatar1.jpeg',
+        ],
+        title: '4K+',
+        subtitle: 'People Looking for New Homes'
+      },
+    ]
   }),
   setup() {
     const { smAndDown, sm, xs } = useDisplay();
@@ -165,16 +220,13 @@ p {
   }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {}
 
-  
-}
-
-@media screen and (min-width: 1600px){
+@media screen and (min-width: 1600px) {
   .hero-title {
     font-size: 3.2rem;
   }
-  
+
   .hero-title-outline {
     font-size: 3.2rem;
   }
@@ -186,6 +238,13 @@ p {
   p {
     font-size: 1.6rem;
   }
-  
+
+}
+
+.marquee-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 5% 0;
 }
 </style>

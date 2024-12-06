@@ -1,12 +1,13 @@
 <template>
-    <section class="px-0" :style="{ 'height': smAndDown ? 'auto' : '100vh'}">
+    <section class="px-0" :style="{ 'height': smAndDown ? 'auto' : '100vh' }">
         <v-row justify="center" class="my-10">
             <v-col class="text-center" cols="12" md="4">
                 <v-row justify="center" class="mb-2">
                     <div style="width: 32px; height: 1px; background: #F59E0B;">
                     </div>
                 </v-row>
-                <div style="text-align: center; color: #F59E0B; font-size: 14px; font-family: Lexend; font-weight: 500;">
+                <div
+                    style="text-align: center; color: #F59E0B; font-size: 14px; font-family: Lexend; font-weight: 500;">
                     See Our Reviews
                 </div>
                 <h1 style="text-align: center; color: #1B1C57; font-size: 32px; font-weight: 600;">
@@ -14,8 +15,8 @@
                 </h1>
             </v-col>
         </v-row>
-        <swiper :modules="modules" :slides-per-view="smAndDown ? 1 : 2" :space-between="50" autoplay loop="true" @swiper="onSwiper"
-            @slideChange="onSlideChange" >
+        <swiper :modules="modules" :slides-per-view="smAndDown ? 1 : 2" :space-between="50" autoplay loop="true"
+            @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide v-for="(review, index) in reviews" :key="index">
                 <ReviewCard :img-file="review.imgFile" :author-img="review.authorImg" :author="review.author"
                     :author-role="review.authorRole" :title="review.title" :review="review.review"
@@ -40,13 +41,15 @@ import 'swiper/css/navigation';
 import ReviewCard from './ReviewCard.vue';
 
 import { useDisplay } from 'vuetify';
+//import { Vue3Marquee } from 'vue3-marquee';
 
 export default {
     name: 'ReviewsSection',
     components: {
         Swiper,
         SwiperSlide,
-        ReviewCard
+        ReviewCard,
+        //Vue3Marquee
     },
     data: () => ({
         reviews: [

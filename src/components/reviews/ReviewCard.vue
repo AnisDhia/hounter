@@ -1,7 +1,7 @@
 <template>
     <div style="position: relative;">
         <v-img :src="require('@/assets/img/' + imgFile)" class="rounded" aspect-ratio="16/9" cover
-            :style="{ width: auto, height: smAndDown ? '50vh' : '400px' }"
+            :style="{ width: auto, height: smAndDown ? '50vh' : '500px', margin: '0 25px', }"
             style="opacity: 0.70; background: linear-gradient(0deg, #C4C4C4 0%, #C4C4C4 100%); border-radius: 8px;">
 
         </v-img>
